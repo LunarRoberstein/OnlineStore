@@ -46,7 +46,5 @@ Route::middleware('admin')->group(function () {
     Route::put('/admin/products/{id}/update', [AdminProductController::class, 'update'])->name('admin.product.update');
 });
 
-// Auth::routes() butuh package "laravel/ui" agar tidak error.
-// Jalankan: composer require laravel/ui && php artisan ui:auth
-// Kalau ingin pendekatan modern, gunakan Laravel Breeze sebagai gantinya.
+
 Auth::routes();

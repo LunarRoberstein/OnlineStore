@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -47,4 +47,3 @@ Route::middleware('admin')->group(function () {
 });
 
 
-Auth::routes();

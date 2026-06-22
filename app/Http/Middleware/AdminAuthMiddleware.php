@@ -6,17 +6,14 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
 class AdminAuthMiddleware
 {
-    public function handle(Request $request, Closure $next): mixed
+    public function handle(Request $request, Closure $next)
     {
-       if (Auth::user() && Auth::user()->role == 'admin') {
+        if (Auth::user() && Auth::user()->role == 'admin') {
             return $next($request);
+        } else {
+            return redirect()->route('home.index');
         }
-
-        return redirect()->route('home.index');
     }
-
-    
 }

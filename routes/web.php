@@ -1,6 +1,6 @@
 <?php
 
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -34,6 +34,7 @@ Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 Route::middleware('auth')->group(function () {
     Route::get('/cart/purchase', [ProductController::class, 'purchase'])->name('cart.purchase');
     Route::get('/my-account/orders', [MyAccountController::class, 'orders'])->name('myaccount.orders');
+
 });
 
 Route::middleware('admin')->group(function () {
@@ -43,8 +44,9 @@ Route::middleware('admin')->group(function () {
     Route::delete('/admin/products/{id}/delete', [AdminProductController::class, 'delete'])->name('admin.product.delete');
     Route::get('/admin/products/{id}/edit', [AdminProductController::class, 'edit'])->name('admin.product.edit');
     Route::put('/admin/products/{id}/update', [AdminProductController::class, 'update'])->name('admin.product.update');
-
-    Route::get('/login', function () {
-        return redirect('/');
-    })->name('login');
 });
+
+// Auth::routes() butuh package "laravel/ui" agar tidak error.
+// Jalankan: composer require laravel/ui && php artisan ui:auth
+// Kalau ingin pendekatan modern, gunakan Laravel Breeze sebagai gantinya.
+Auth::routes();

@@ -30,5 +30,11 @@ class DatabaseSeeder extends Seeder
             'price' => 20.00,
             'image' => 'safe.png',
         ]);
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@example.com',
+            'password' => bcrypt('password'),
+            'balance' => 5000,
+        ]);
     }
 }

@@ -5,11 +5,11 @@
     @forelse ($viewData["orders"] as $order)
         <div class="card mb-4">
             <div class="card-header">
-                Order #{{ $order->id }}
+                Order #{{ $order->getId() }}
             </div>
             <div class="card-body">
-                <b>Date:</b> {{ $order->created_at }}<br />
-                <b>Total:</b> ${{ $order->total }}<br />
+                <b>Date:</b> {{ $order->getCreatedAt() }}<br />
+                <b>Total:</b> ${{ $order->getTotal() }}<br />
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
                         <tr>
@@ -20,16 +20,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($order->items as $item)
+                        @foreach ($order->getItems() as $item)
                             <tr>
-                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->getId() }}</td>
                                 <td>
-                                    <a class="link-success" href="{{ route('product.show', ['id' => $item->product->id]) }}">
-                                        {{ $item->product->name }}
+                                    <a class="link-success"
+                                        href="{{ route('product.show', ['id' => $item->getProduct()->getId()]) }}">
+                                        {{ $item->getProduct()->getName() }}
                                     </a>
                                 </td>
-                                <td>${{ $item->price }}</td>
-                                <td>{{ $item->quantity }}</td>
+                                <td>${{ $item->getPrice() }}</td>
+                                <td>{{ $item->getQuantity() }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -40,3 +41,5 @@
         <div class="alert alert-danger" role="alert">
             Seems to be that you have not purchased anything in our store =(.
         </div>
+    @endforelse
+@endsection

@@ -5,11 +5,11 @@
     @forelse ($viewData["orders"] as $order)
         <div class="card mb-4">
             <div class="card-header">
-                Order #{{ $order->getId() }}
+                Order #{{ $order->id }} {{-- getId() → id --}}
             </div>
             <div class="card-body">
-                <b>Date:</b> {{ $order->getCreatedAt() }}<br />
-                <b>Total:</b> ${{ $order->getTotal() }}<br />
+                <b>Date:</b> {{ $order->created_at }}<br /> {{-- getCreatedAt() → created_at --}}
+                <b>Total:</b> ${{ $order->total }}<br /> {{-- getTotal() → total --}}
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
                         <tr>
@@ -20,26 +20,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($order->getItems() as $item)
+                        @foreach ($order->items as $item) {{-- getItems() → items --}}
                             <tr>
-                                <td>{{ $item->getId() }}</td>
+                                <td>{{ $item->id }}</td> {{-- getId() → id --}}
                                 <td>
-                                    <a class="link-success"
-                                        href="{{ route('product.show', ['id' => $item->getProduct()->getId()]) }}">
-                                        {{ $item->getProduct()->getName() }}
-                                    </a>
-                                </td>
-                                <td>${{ $item->getPrice() }}</td>
-                                <td>{{ $item->getQuantity() }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    @empty
-        <div class="alert alert-danger" role="alert">
-            Seems to be that you have not purchased anything in our store =(.
-        </div>
-    @endforelse
-@endsection
+                                    <a class="link-success" href="{{ route('product.show', ['id' => $item->product->id]) }}">
+                                        {{-- getProduct()->getId() → product->id --}}
+                                        {{ $item->product->name }} {{-- getName() → name --}}

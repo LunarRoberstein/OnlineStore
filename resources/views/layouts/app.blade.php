@@ -23,44 +23,28 @@
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link active" href="{{ route('home.index') }}">Home</a>
                     <a class="nav-link active" href="{{ route('product.index') }}">Products</a>
-                    <a class="nav-link active" href="{{ route('cart.index') }}">Cart</a>
                     <a class="nav-link active" href="{{ route('home.about') }}">About</a>
-                    <div class="vr bg-white mx-2 d-none d-lg-block"></div>
-                    @guest
-                        <a class="nav-link active" href="{{ route('login') }}">Login</a>
-                        <a class="nav-link active" href="{{ route('register') }}">Register</a>
-                    @else
-                    <a class="nav-link active" href="{{ route('myaccount.orders') }}">My Orders</a>
-                        <form id="logout" action="{{ route('logout') }}" method="POST">
-                            <a role="button" class="nav-link active"
-                                onclick="document.getElementById('logout').submit();">Logout</a>
-                            @csrf
-                        </form>
-                    @endguest
                 </div>
             </div>
         </div>
     </nav>
-
     <header class="masthead bg-primary text-white text-center py-4">
         <div class="container d-flex align-items-center flex-column">
-            <h2>@yield('subtitle', 'Bulan Online Store')</h2>
+            <h2>@yield('subtitle', 'A Laravel Online Store')</h2>
         </div>
     </header>
     <!-- header -->
-
     <div class="container my-4">
         @yield('content')
     </div>
-
     <!-- footer -->
     <div class="copyright py-4 text-center text-white">
         <div class="container">
             <small>
                 Copyright - <a class="text-reset fw-bold text-decoration-none" target="_blank"
-                    href="https://www.instagram.com/bulanysfa?igsh=MW9vaXNnamRzcWJrcg==">
+                    href="https://www.instagram.com/bulanysfa?igsh=cmlvbGUyd3o0cXF6">
                     Bulan Nursyfa
-                </a> - <b>Politeknik Negeri Banjarmasin</b>
+                </a> - <b>Lunar Roberstein</b>
             </small>
         </div>
     </div>
@@ -68,5 +52,3 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
 </body>
-
-</html>

@@ -55,7 +55,7 @@ class Product extends Model
     }
     public function getName()
     {
-        return $this->attributes['name'];
+        return $this->attributes['description'];
     }
     public function setName($name)
     {
